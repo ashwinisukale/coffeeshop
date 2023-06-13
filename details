@@ -1,0 +1,23 @@
+rails new coffee_shop
+
+rails g scaffold Item name:string price:float tax_rate:float
+
+rails generate model Order total_price:float 
+
+rails generate model OrderItem item:references order:references
+
+rails g scaffold Discount item_ids:string discount:float discount_amount:float discounted_item_id:integer
+
+
+APIs
+
+/items   - which will return list of available items with tax_rate
+/oders   - all the orders
+GET /order/1 - specific order
+
+POST /order - item with quantity create order with no_payment -> response with calculation
+PUT /order - update order with payement true - return total price 
+
+
+POST order
+body = {{item_id: 1, quantity: 2},{item_id: 2, quantity: 1}}
