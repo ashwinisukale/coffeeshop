@@ -70,6 +70,7 @@ class Discount < ApplicationRecord
   end
 
   def self.apply_tax(tax, total)
-    total += total * tax
+    tax = total - (tax * (total/100))
+    total = total + tax
   end
 end
